@@ -174,6 +174,9 @@ export function Hero() {
             <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
               Special Pre-launch Offer
             </p>
+            <p className="mt-1 text-center text-sm font-semibold text-gray-900 lg:text-left">
+              Save 33%
+            </p>
             <div className="mt-8 flex flex-col items-center lg:items-start">
               <div className="flex items-center gap-x-8">
                 <div className="rounded-2xl bg-gray-50 p-4">
@@ -182,7 +185,7 @@ export function Hero() {
                   </div>
                   <div className="mt-1 flex items-baseline gap-x-2">
                     <span className="text-2xl font-bold tracking-tight text-gray-900">
-                      £14.99
+                      £24.99
                     </span>
                     <span className="text-sm text-gray-600">each</span>
                   </div>
@@ -191,10 +194,10 @@ export function Hero() {
                   <div className="font-semibold">Complete Bundle</div>
                   <div className="mt-1 flex items-baseline gap-x-2">
                     <span className="text-2xl font-bold tracking-tight">
-                      £24.99
+                      £49.99
                     </span>
                     <span className="text-sm line-through opacity-70">
-                      £39.99
+                      £74.97
                     </span>
                   </div>
                 </div>
