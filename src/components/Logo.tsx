@@ -12,44 +12,46 @@ export function Logomark(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg
-      width="41"
-      height="77"
-      viewBox="0 0 41 77"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="1.41229"
-        y="44.0449"
-        width="13.6197"
-        height="41.9191"
-        rx="6.80984"
-        transform="rotate(-42.0121 1.41229 44.0449)"
-        fill="#B8004D"
-        stroke="#B8004D"
-        stroke-width="2"
-      />
-      <rect
-        x="22.4686"
-        y="21.2476"
-        width="13.6197"
-        height="51.0975"
-        rx="6.80984"
-        transform="rotate(-0.680858 22.4686 21.2476)"
-        fill="#B8004D"
-        stroke="#B8004D"
-        stroke-width="2"
-      />
-      <circle
-        cx="29.9433"
-        cy="7.94251"
-        r="6.17613"
-        transform="rotate(-6.50186 29.9433 7.94251)"
-        fill="#B8004D"
-        stroke="#B8004D"
-        stroke-width="2"
-      />
-    </svg>
+    <div className={props.className}>
+      <svg
+        width="41"
+        height="77"
+        viewBox="0 0 41 77"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="1.41229"
+          y="44.0449"
+          width="13.6197"
+          height="41.9191"
+          rx="6.80984"
+          transform="rotate(-42.0121 1.41229 44.0449)"
+          fill="#B8004D"
+          stroke="#B8004D"
+          stroke-width="2"
+        />
+        <rect
+          x="22.4686"
+          y="21.2476"
+          width="13.6197"
+          height="51.0975"
+          rx="6.80984"
+          transform="rotate(-0.680858 22.4686 21.2476)"
+          fill="#B8004D"
+          stroke="#B8004D"
+          stroke-width="2"
+        />
+        <circle
+          cx="29.9433"
+          cy="7.94251"
+          r="6.17613"
+          transform="rotate(-6.50186 29.9433 7.94251)"
+          fill="#B8004D"
+          stroke="#B8004D"
+          stroke-width="2"
+        />
+      </svg>
+    </div>
   )
 }

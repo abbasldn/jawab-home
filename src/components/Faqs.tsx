@@ -3,53 +3,48 @@ import { Container } from '@/components/Container'
 const faqs = [
   [
     {
-      question: 'How do I know the tips are good?',
+      question: 'How do the conversation cards work?',
       answer:
-        'Our whole business depends on our tips being good, so it’s in our best interest that they are. The results of our customers speak for themselves, just trust us.',
+        'Each card contains thoughtfully crafted questions designed to spark meaningful discussions between Muslim couples. Simply draw a card and take turns answering the questions together.',
     },
     {
-      question: 'Isn’t this insider trading?',
+      question: 'Are the questions appropriate for a family setting?',
       answer:
-        'Yes exactly. But at scale! Historically you could only make insider trades with knowledge from your direct network. Pocket brings you insider trading tips from people you don’t even know.',
+        "Yes, all questions have been carefully reviewed to ensure they align with family values while fostering healthy communication between spouses (in short, you won't be asked about your private life).",
     },
     {
-      question: 'But isn’t insider trading illegal?',
+      question: 'Which pack should I start with?',
       answer:
-        'Here’s the thing: you’re the one doing the insider trading, not us. We’re just giving you the tips and some tools to make trades. We’re not doing anything wrong here.',
-    },
-  ],
-  [
-    {
-      question: 'Do the people giving you tips realize what they are doing?',
-      answer:
-        'Again I would argue this isn’t really our responsibility. People make their own choices. If they don’t research the consequences that’s on them, not on us.',
-    },
-    {
-      question: 'Where is Pocket based?',
-      answer:
-        'Let’s just say it’s not somewhere where the SEC is going to find us.',
-    },
-    {
-      question: 'Is there any age limit to trading on Pocket?',
-      answer:
-        'For our free plan, the age limit is based on the minimum age to trade in your country of residence. Our VIP plan uses advanced transaction anonymization though, so you can use that plan even if you’re 9 years old. Or a dog.',
+        'We recommend starting with "The Marriage Meeting" pack if you\'re not currently married, "Just Married" if you are newlyweds, or "Been Married" if you are looking to deepen your existing connection.',
     },
   ],
   [
     {
-      question: 'How did you get this on the App Store?',
+      question: 'How often should we use the cards?',
       answer:
-        'Honestly we were surprised too, but eventually we found out that the app reviewer found the app so compelling they approved it just so they could use it themselves.',
+        'We recommend setting aside dedicated time weekly for meaningful conversations. Many couples find success with a weekly "meeting" using good conversation starters.',
     },
     {
-      question: 'How do I explain the money I withdraw from Pocket to the IRS?',
+      question: 'Are the questions available in other languages?',
       answer:
-        'This feels like one-hundred percent a you problem. Pocket is not responsible in any way for your tax returns.',
+        'Currently, the cards are only available in English, but we are working on translations to Arabic and other languages to serve our global Muslim community better.',
+    },
+  ],
+  [
+    {
+      question: 'How many questions are in each pack?',
+      answer:
+        'Each pack contains over 50 unique questions, but the packs are being regularly updated with new questions.',
     },
     {
-      question: 'How do I become an insider?',
+      question: "Can I get a refund if I'm not satisfied?",
       answer:
-        'Contact us with some details about your industry and the type of access you have to apply for an insider account. Once approved, we’ll send you a guide on collecting insider information without being detected at work.',
+        "Yes, we offer a 7-day satisfaction guarantee. If you're not happy with your purchase, we'll provide a full refund.",
+    },
+    {
+      question: 'Do you ship internationally?',
+      answer:
+        "As this is a digital product, there's no shipping required! You'll get instant access to the digital cards after purchase.",
     },
   ],
 ]
@@ -72,7 +67,7 @@ export function Faqs() {
           <p className="mt-2 text-lg text-gray-600">
             If you have anything else you want to ask,{' '}
             <a
-              href="mailto:info@example.com"
+              href="mailto:info@getjawab.com"
               className="text-gray-900 underline"
             >
               reach out to us

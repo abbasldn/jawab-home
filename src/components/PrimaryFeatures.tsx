@@ -10,7 +10,7 @@ import { CircleBackground } from '@/components/CircleBackground'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
 
-import AppUnlimitedUpdatesScreen from '@/components/AppUnlimitedUpdatesScreen'
+import AppPacksScreen from '@/components/AppPacksScreen'
 import AppFavouritesScreen from './AppFavouritesScreen'
 import AppChallengesScreen from './AppChallengesScreen'
 
@@ -23,11 +23,11 @@ const features = [
     screen: AppFavouritesScreen,
   },
   {
-    name: 'Unlimited Updates',
+    name: 'Packs',
     description:
-      'Get fresh conversation starters and new card packs as we continue to develop and expand our collection, at no additional cost.',
+      'Choose from The Marriage Meeting, Just Married, or Been Married packs - you can add your cards to the favourites section to use them later.',
     icon: DeviceClockIcon,
-    screen: AppUnlimitedUpdatesScreen,
+    screen: AppPacksScreen,
   },
   {
     name: 'Relationship Intimacy Challenges',
@@ -154,7 +154,7 @@ function FeaturesDesktop() {
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <CircleBackground color="#13B5C8" className="animate-spin-slower" />
         </div>
-        <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
+        <PhoneFrame className="mx-auto max-w-[366px]">
           <TabPanels as={Fragment}>
             <AnimatePresence
               initial={false}

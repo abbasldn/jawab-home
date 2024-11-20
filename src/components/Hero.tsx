@@ -1,20 +1,7 @@
 import { useId } from 'react'
-import Image from 'next/image'
-import clsx from 'clsx'
-
-import { AppDemo } from '@/components/AppDemo'
-import { AppStoreLink } from '@/components/AppStoreLink'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
-import logoBbc from '@/images/logos/bbc.svg'
-import logoCbs from '@/images/logos/cbs.svg'
-import logoCnn from '@/images/logos/cnn.svg'
-import logoFastCompany from '@/images/logos/fast-company.svg'
-import logoForbes from '@/images/logos/forbes.svg'
-import logoHuffpost from '@/images/logos/huffpost.svg'
-import logoTechcrunch from '@/images/logos/techcrunch.svg'
-import logoWired from '@/images/logos/wired.svg'
 import { AppScreenshot } from './AppScreenshot'
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
@@ -117,19 +104,6 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   )
 }
 
-function PlayIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <circle cx="12" cy="12" r="11.5" stroke="#D4D4D4" />
-      <path
-        d="M9.5 14.382V9.618a.5.5 0 0 1 .724-.447l4.764 2.382a.5.5 0 0 1 0 .894l-4.764 2.382a.5.5 0 0 1-.724-.447Z"
-        fill="#A3A3A3"
-        stroke="#A3A3A3"
-      />
-    </svg>
-  )
-}
-
 export function Hero() {
   return (
     <div className="overflow-hidden py-16 sm:py-24 lg:pb-32 xl:pb-36">
@@ -174,9 +148,6 @@ export function Hero() {
             <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
               Special Pre-launch Offer
             </p>
-            <p className="mt-1 text-center text-sm font-semibold text-gray-900 lg:text-left">
-              Save 33%
-            </p>
             <div className="mt-8 flex flex-col items-center lg:items-start">
               <div className="flex items-center gap-x-8">
                 <div className="rounded-2xl bg-gray-50 p-4">
@@ -185,19 +156,22 @@ export function Hero() {
                   </div>
                   <div className="mt-1 flex items-baseline gap-x-2">
                     <span className="text-2xl font-bold tracking-tight text-gray-900">
-                      £24.99
+                      $14.99
                     </span>
-                    <span className="text-sm text-gray-600">each</span>
+
+                    <span className="text-sm font-bold tracking-tight text-gray-900 line-through opacity-70">
+                      $19.99
+                    </span>
                   </div>
                 </div>
                 <div className="rounded-2xl bg-gray-900 p-4 text-white">
                   <div className="font-semibold">Complete Bundle</div>
                   <div className="mt-1 flex items-baseline gap-x-2">
                     <span className="text-2xl font-bold tracking-tight">
-                      £49.99
+                      $39.99
                     </span>
                     <span className="text-sm line-through opacity-70">
-                      £74.97
+                      $59.97
                     </span>
                   </div>
                 </div>
