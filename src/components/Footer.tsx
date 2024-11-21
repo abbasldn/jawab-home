@@ -35,6 +35,7 @@ export function Footer() {
             </div>
             <nav className="mt-11 flex gap-8">
               <NavLinks />
+              <Link href="/privacy">Privacy Policy</Link>
             </nav>
           </div>
         </div>
