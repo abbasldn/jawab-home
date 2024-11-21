@@ -171,7 +171,7 @@ export function Hero() {
                       $39.99
                     </span>
                     <span className="text-sm line-through opacity-70">
-                      $59.97
+                      $49.97
                     </span>
                   </div>
                 </div>

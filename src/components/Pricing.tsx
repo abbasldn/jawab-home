@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Radio, RadioGroup } from '@headlessui/react'
+import { useUser } from '@clerk/nextjs'
+import AuthModal from './AuthModal'
 import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+import { handlePurchase } from '@/utils/handlePurchase'
 
 type PlanProps = {
   name: string
@@ -23,32 +25,19 @@ type PlanProps = {
 
 const plans: PlanProps[] = [
   {
-    name: 'Single Pack',
-    featured: false,
-    originalPrice: '$19.99',
-    discountPrice: '$14.99',
-    description:
-      'A single pack. You can choose from The Marriage Meeting, Just Married, or Been Married',
-    button: {
-      label: 'PREORDER Now',
-      onClick: () => {
-        console.log('clicked')
-      },
-    },
-    features: ['Single Pack', 'Lifetime Updates'],
-    logomarkClassName: 'fill-gray-500',
-  },
-  {
     name: 'All Packs',
     featured: true,
-    originalPrice: '$59.97',
+    originalPrice: '$49.97',
     discountPrice: '$39.99',
     description:
       'All packs. The Marriage Meeting, Just Married, or Been Married',
     button: {
       label: 'PREORDER Now',
       onClick: () => {
-        console.log('clicked')
+        fetch('/api/create-checkout-session', {
+          method: 'POST',
+          body: JSON.stringify({ isBundle: true }),
+        })
       },
     },
     features: ['All Packs', 'Lifetime Updates'],
@@ -86,77 +75,97 @@ function Plan({
   features,
   featured = false,
 }: PlanProps) {
+  const { isSignedIn } = useUser()
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  const { user } = useUser()
+
+  const userEmail = user?.emailAddresses[0].emailAddress
+
   return (
-    <section
-      className={clsx(
-        'flex flex-col overflow-hidden rounded-3xl p-6 shadow-lg shadow-gray-900/5',
-        featured ? 'order-first bg-gray-900 lg:order-none' : 'bg-white',
-      )}
-    >
-      <h3
+    <>
+      <section
         className={clsx(
-          'flex items-center text-sm font-semibold',
-          featured ? 'text-white' : 'text-gray-900',
+          'flex flex-col overflow-hidden rounded-3xl p-6 shadow-lg shadow-gray-900/5',
+          featured ? 'order-first bg-gray-900 lg:order-none' : 'bg-white',
         )}
       >
-        <span>{name}</span>
-      </h3>
-      <p
-        className={clsx(
-          'relative mt-5 flex text-2xl tracking-tight',
-          featured ? 'text-gray-300' : 'text-gray-700',
-        )}
-      >
-        <span className="line-through">{originalPrice}</span>
-      </p>
-      <p
-        className={clsx(
-          'relative mt-1 flex text-3xl tracking-tight',
-          featured ? 'text-white' : 'text-gray-900',
-        )}
-      >
-        <span>{discountPrice}</span>
-      </p>
-      <p
-        className={clsx(
-          'mt-3 text-sm',
-          featured ? 'text-gray-300' : 'text-gray-700',
-        )}
-      >
-        {description}
-      </p>
-      <div className="order-last mt-6">
-        <ul
-          role="list"
+        <h3
           className={clsx(
-            '-my-2 divide-y text-sm',
-            featured
-              ? 'divide-gray-800 text-gray-300'
-              : 'divide-gray-200 text-gray-700',
+            'flex items-center text-sm font-semibold',
+            featured ? 'text-white' : 'text-gray-900',
           )}
         >
-          {features.map((feature) => (
-            <li key={feature} className="flex py-2">
-              <CheckIcon
-                className={clsx(
-                  'h-6 w-6 flex-none',
-                  featured ? 'text-white' : 'text-pink-500',
-                )}
-              />
-              <span className="ml-4">{feature}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <Button
-        onClick={button.onClick}
-        color={featured ? 'pink' : 'gray'}
-        className="mt-6"
-        aria-label={`Get started with the ${name} plan for ${discountPrice}`}
-      >
-        {button.label}
-      </Button>
-    </section>
+          <span>{name}</span>
+        </h3>
+        <p
+          className={clsx(
+            'relative mt-5 flex text-2xl tracking-tight',
+            featured ? 'text-gray-300' : 'text-gray-700',
+          )}
+        >
+          <span className="line-through">{originalPrice}</span>
+        </p>
+        <p
+          className={clsx(
+            'relative mt-1 flex text-3xl tracking-tight',
+            featured ? 'text-white' : 'text-gray-900',
+          )}
+        >
+          <span>{discountPrice}</span>
+        </p>
+        <p
+          className={clsx(
+            'mt-3 text-sm',
+            featured ? 'text-gray-300' : 'text-gray-700',
+          )}
+        >
+          {description}
+        </p>
+        <div className="order-last mt-6">
+          <ul
+            role="list"
+            className={clsx(
+              '-my-2 divide-y text-sm',
+              featured
+                ? 'divide-gray-800 text-gray-300'
+                : 'divide-gray-200 text-gray-700',
+            )}
+          >
+            {features.map((feature) => (
+              <li key={feature} className="flex py-2">
+                <CheckIcon
+                  className={clsx(
+                    'h-6 w-6 flex-none',
+                    featured ? 'text-white' : 'text-pink-500',
+                  )}
+                />
+                <span className="ml-4">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <Button
+          onClick={() =>
+            handlePurchase(true, name, userEmail, setShowAuthModal)
+          }
+          color={featured ? 'pink' : 'gray'}
+          className="mt-6"
+          aria-label={`Get started with the ${name} plan for ${discountPrice}`}
+        >
+          {button.label}
+        </Button>
+      </section>
+
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onSuccess={() =>
+          handlePurchase(true, name, userEmail, setShowAuthModal)
+        }
+        setIsOpen={setShowAuthModal}
+        packName={name}
+      />
+    </>
   )
 }
 
@@ -181,7 +190,7 @@ export function Pricing() {
           </p>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 sm:mt-20 lg:max-w-none lg:grid-cols-2">
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-10 sm:mt-20">
           {plans.map((plan) => (
             <Plan key={plan.name} {...plan} />
           ))}

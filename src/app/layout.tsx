@@ -3,6 +3,7 @@ import { Outfit } from 'next/font/google'
 import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
+import { ClerkProvider } from '@clerk/nextjs'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -25,8 +26,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={clsx('bg-gray-50 antialiased', outfit.variable)}>
-      <body>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang="en"
+        className={clsx('bg-gray-50 antialiased', outfit.variable)}
+      >
+        <body>{children}</body>
+      </html>
+    </ClerkProvider>
   )
 }
