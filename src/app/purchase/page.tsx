@@ -15,5 +15,10 @@ export default function Purchase() {
     handlePurchase(true, '', email)
   }, [email])
 
-  return <div>Purchase</div>
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50">
+      <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-rose-800"></div>
+      <p className="mt-4 text-base text-gray-600">Redirecting to checkout...</p>
+    </div>
+  )
 }
