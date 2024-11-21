@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { headers } from 'next/headers'
-import { createClient } from '@vercel/postgres'
 import { Resend } from 'resend'
+import { createCustomer } from '@/db'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2024-11-20.acacia',
@@ -30,14 +30,12 @@ export async function POST(req: Request) {
     const session = event.data.object as Stripe.Checkout.Session
 
     try {
-      const db = createClient()
-      await db.connect()
-
-      // Insert customer data into database
-      await db.sql`
-        INSERT INTO customers (email, price_id, purchase_date)
-        VALUES (${session.customer_email}, ${session.line_items?.data[0].price?.id}, NOW())
-      `
+      await createCustomer({
+        email: session.customer_email!,
+        priceId: session.line_items?.data[0].price?.id!,
+        purchaseDate: new Date(),
+        customerId: session.customer as string,
+      })
 
       // Send confirmation email
       await resend.emails.send({
