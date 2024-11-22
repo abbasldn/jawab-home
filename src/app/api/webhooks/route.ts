@@ -28,11 +28,15 @@ export async function POST(req: Request) {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session
+    const lineItemsObject = await stripe.checkout.sessions.listLineItems(
+      session.id,
+    )
+    const lineItems = lineItemsObject.data
 
     try {
       await createCustomer({
         email: session.customer_email!,
-        priceId: session.line_items?.data[0].price?.id!,
+        priceId: lineItems[0].price?.id!,
         purchaseDate: new Date(),
         customerId: session.customer as string,
       })
