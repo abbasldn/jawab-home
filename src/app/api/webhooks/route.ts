@@ -50,6 +50,7 @@ export async function POST(req: Request) {
           <h1>Thank you for being an early supporter!</h1>
           <p>We're thrilled to have you as one of our first customers. You'll receive another email when the app launches with instructions on how to access your conversation cards.</p>
           <p>In the meantime, if you have any questions, feel free to reply to this email.</p>
+          <p>You can also follow the development of Jawab on Abbas's <a href="https://tiktok.com/@abbascodes">TikTok</a> and <a href="https://www.instagram.com/abbascodes_/">Instagram</a>.</p>
           <p>Best regards,<br>The Jawab Team</p>
         `,
       })
