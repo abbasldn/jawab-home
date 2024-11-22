@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <PlausibleProvider domain="getjawab.com">
+    <PlausibleProvider domain="getjawab.com" revenue={true}>
       <ClerkProvider>
         <html
           lang="en"
