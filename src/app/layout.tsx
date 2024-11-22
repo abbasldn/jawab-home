@@ -4,6 +4,7 @@ import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
 import { ClerkProvider } from '@clerk/nextjs'
+import Script from 'next/script'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -31,6 +32,18 @@ export default function RootLayout({
         lang="en"
         className={clsx('bg-gray-50 antialiased', outfit.variable)}
       >
+        <head>
+          <Script
+            src="//cdn.trackdesk.com/tracking.js"
+            strategy="afterInteractive"
+          />
+          <Script id="trackdesk-init" strategy="afterInteractive">
+            {`
+    (function(t,d,k){(t[k]=t[k]||[]).push(d);t[d]=t[d]||t[k].f||function(){(t[d].q=t[d].q||[]).push(arguments)}})(window,"trackdesk","TrackdeskObject");
+    trackdesk('jawab', 'click');
+  `}
+          </Script>
+        </head>
         <body>{children}</body>
       </html>
     </ClerkProvider>
