@@ -64,13 +64,13 @@ export async function POST(req: Request) {
       client_reference_id: clientReferenceId || undefined,
     } as Stripe.Checkout.SessionCreateParams
 
-    if (coupon) {
-      StripeCheckoutSessionCreateParams.discounts = [
-        {
-          coupon,
-        },
-      ]
-    }
+    // if (coupon) {
+    //   StripeCheckoutSessionCreateParams.discounts = [
+    //     {
+    //       coupon,
+    //     },
+    //   ]
+    // }
 
     const session = await stripe.checkout.sessions.create(
       StripeCheckoutSessionCreateParams,
