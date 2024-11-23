@@ -146,11 +146,11 @@ export function Hero() {
           </div>
           <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
             <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
-              Special Pre-launch Offer
+              Special Pre-launch Offer ($30 off!)
             </p>
             <div className="mt-8 flex flex-col items-center lg:items-start">
               <div className="flex items-center gap-x-8">
-                <div className="rounded-2xl bg-gray-50 p-4">
+                {/* <div className="rounded-2xl bg-gray-50 p-4">
                   <div className="text-base font-semibold text-gray-900">
                     Individual Packs
                   </div>
@@ -163,15 +163,15 @@ export function Hero() {
                       $19.99
                     </span>
                   </div>
-                </div>
+                </div> */}
                 <div className="rounded-2xl bg-gray-900 p-4 text-white">
                   <div className="font-semibold">Complete Bundle</div>
                   <div className="mt-1 flex items-baseline gap-x-2">
                     <span className="text-2xl font-bold tracking-tight">
-                      $39.99
+                      $19.99
                     </span>
                     <span className="text-sm line-through opacity-70">
-                      $49.97
+                      $49.99
                     </span>
                   </div>
                 </div>

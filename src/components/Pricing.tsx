@@ -27,8 +27,8 @@ const plans: PlanProps[] = [
   {
     name: 'All Packs',
     featured: true,
-    originalPrice: '$49.97',
-    discountPrice: '$39.99',
+    originalPrice: '$49.99',
+    discountPrice: '$19.99',
     description:
       'All packs. The Marriage Meeting, Just Married, or Been Married',
     button: {
